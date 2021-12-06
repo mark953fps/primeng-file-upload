@@ -19,3 +19,7 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.ui-fileupload-content.ui-widget-content.ui-corner-bottom {
+  display: none !important;
+}

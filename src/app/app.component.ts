@@ -6,18 +6,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  selectedFile: any;
-  isSave: boolean = false;
+  selectedDocType: any;
+  multipleSelectedFile: any = [];
+  fileTable: any = [];
+  documentTypeList: any = [
+    {},
+    {
+      documentType: 'image/*'
+    },
+    {
+      documentType: 'x-world/x-vrml'
+    }
+  ];
 
   public ngOnInit() {}
 
-  public save() {
-    this.isSave = true;
-    console.log(this.selectedFile, 'this.selectedFile')
+  public fileUploaded(event, index) {
+    this.multipleSelectedFile[index] = event;
+    // console.log(this.multipleSelectedFile, 'fileupload');
+    this.fileTable.push({ documentName: event.files[0].name, documentType: this.selectedDocType['documentType'], file: event.files[0] });
+
+    // console.log(this.fileTable, 'this.fileTable')
+    // console.log(event.files[0], 'event name')
   }
 
-  public myUploader(event) {
-    this.isSave = false;
-    this.selectedFile = event;
+  public saveMultiFile() {
+    console.log(this.fileTable, 'this.fileTable')
   }
 }

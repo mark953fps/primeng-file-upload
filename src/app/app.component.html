@@ -1,17 +1,35 @@
+
 <div class="container">
-    <p-fileUpload   
-        name="file"
-        multiple="multiple" 
-        accept="image/*" 
-        [auto]="true"
-        customUpload="true"
-        (uploadHandler)="myUploader($event)">
+    <p-dropdown 
+        [options]="documentTypeList" 
+        [(ngModel)]="selectedDocType" 
+        optionLabel="documentType">
+    </p-dropdown>
+
+    <p-fileUpload 
+        name="file" 
+        [auto]="true" 
+        [accept]="selectedDocType?.documentType"
+        customUpload="true" 
+        (uploadHandler)="fileUploaded($event, i)"
+        [disabled]="!selectedDocType">
     </p-fileUpload>
 
-    <br>
-    <button pButton type="button" label="Save" (click)="save()"></button>
+    <br><br>
+    <table class="table">
+      <th>Document Name</th>
+      <th>Document Type</th>
+
+      <tr *ngFor="let data of fileTable">
+        <td>{{ data.documentName }}</td>
+        <td>{{ data.documentType }}</td>
+      </tr>
+
+      <tr *ngIf="!fileTable.length">
+        <td colspan="2" style="text-align: center;">No Records Found.</td>
+      </tr>
+    </table>
 
     <br><br>
-    <small><b>Output :</b></small>
-    <pre *ngIf="isSave && selectedFile['files'].length" style="background:#000; color:#fff; padding: 5px 10px;">{{ selectedFile | json }}</pre>
+    <button pButton type="button" label="Save" (click)="saveMultiFile()"></button>
 </div>
