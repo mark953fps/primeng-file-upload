@@ -1,6 +1,6 @@
 <div class="container">
-    <p-fileUpload 
-        name="myfile[]"  
+    <p-fileUpload   
+        name="file"
         multiple="multiple" 
         accept="image/*" 
         [auto]="true"
@@ -13,5 +13,5 @@
 
     <br><br>
     <small><b>Output :</b></small>
-    <pre *ngIf="selectedFile" style="background:#000; color:#fff; padding: 5px 10px;">{{ selectedFile | json }}</pre>
+    <pre *ngIf="isSave && selectedFile['files'].length" style="background:#000; color:#fff; padding: 5px 10px;">{{ selectedFile | json }}</pre>
 </div>
