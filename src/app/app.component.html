@@ -1,0 +1,17 @@
+<div class="container">
+    <p-fileUpload 
+        [(ngModel)]="selectedFile"
+        name="myfile[]"  
+        multiple="multiple" 
+        accept="image/*" 
+        [auto]="true"
+        customUpload="true"
+        (uploadHandler)="myUploader($event)">
+    </p-fileUpload>
+
+    <br>
+    <button pButton type="button" label="Save" (click)="save()"></button>
+
+    <br>
+    <pre>{{ selectedFile | json }}</pre>
+</div>

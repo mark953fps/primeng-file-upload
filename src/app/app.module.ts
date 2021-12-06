@@ -19,6 +19,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   imports: [
@@ -38,9 +39,10 @@ import { InputTextModule } from 'primeng/inputtext';
     AutoCompleteModule,
     CalendarModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule,
   ],
   declarations: [AppComponent, HelloComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
